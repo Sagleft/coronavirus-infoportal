@@ -18,6 +18,10 @@ footer {
 	text-align: center;
 }
 
+.uk-navbar {
+	background: white!important;
+}
+
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 @font-face {
   font-family: Lato;
@@ -136,6 +140,7 @@ h1 p {
 }
 
 .chart {
+	background: white;
   color: #4a667a;
   text-align: left;
   position: relative;
