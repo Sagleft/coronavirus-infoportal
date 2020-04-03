@@ -1,18 +1,4 @@
-var chart_h = 40;
-var chart_w = 80;
 var stepX = 77 / 14;
-
-var chart_1_y = [
-  1, 1, 1, 1, 5
-];
-
-var chart_2_y = [
-  2, 6, 10, 20, 36
-];
-
-var chart_3_y = [
-  1, 2, 3, 4, 5
-];
 
 /*
 from https://codepen.io/JonasBadalic/pen/PwWXqg
@@ -91,50 +77,44 @@ function drawLineGraph(graph, points, container, id, tag) {
     }
 
     function calculatePercentage(points, graph) {
+        //console.log(points);
         var initValue = points[0];
+        var prevValue;
+
+        if (points.length > 1){
+          prevValue = points[points.length - 2];
+        } else {
+          prevValue = points[0];
+        }
         var endValue = points[points.length - 1];
         var sum = endValue - initValue;
-        var prefix;
+        //console.log('prev: ' + prevValue + ', cur: ' + endValue);
+        //var prefix;
         var percentageGain;
         var stepCount = 1300 / sum;
 
-        function findPrefix() {
+        /*function findPrefix() {
             if (sum > 0) {
                 prefix = "+";
             } else {
-                prefix = "";
+                prefix = "-";
             }
-        }
+        }*/
 
         var percentagePrefix = "";
 
         function percentageChange() {
-            percentageGain = initValue / endValue * 100;
-
-            if(percentageGain > 100){
-              console.log('over100');
-              percentageGain = Math.round(percentageGain * 100*10) / 100;
-            }else if(percentageGain < 100){
-              console.log('under100');
-              percentageGain = Math.round(percentageGain * 10) / 10;
-            }
-            if (initValue > endValue) {
-
-                percentageGain = endValue/initValue*100-100;
-                percentageGain = percentageGain.toFixed(2);
-
-                percentagePrefix = "";
-                $(graph).find('.percentage-value').addClass('negative');
+            //percentageGain = initValue / endValue * 100;
+            percentageGain = Math.round((endValue - prevValue) * 100 / prevValue);
+            if(percentageGain >= 0) {
+              percentagePrefix = '+';
             } else {
-                percentagePrefix = "+";
+              percentagePrefix = '-';
             }
-          if(endValue > initValue){
-              percentageGain = endValue/initValue*100;
-              percentageGain = Math.round(percentageGain);
-          }
+            //console.log(percentageGain);
         };
         percentageChange();
-        findPrefix();
+        //findPrefix();
 
         var percentage = $(graph).find('.percentage-value#chartDataPercentage-' + tag);
         var totalGain = $(graph).find('.total-gain#chartDataTotal-' + tag);
@@ -149,20 +129,29 @@ function drawLineGraph(graph, points, container, id, tag) {
             if (sum > 0) {
                 var timerID = setInterval(function () {
                     i++;
-                    totalGain.text(percentagePrefix + i);
+                    //totalGain.text(percentagePrefix + i);
+                    totalGain.text(i);
                     if (i === sum) clearInterval(timerID);
                 }, intervalTime);
             } else if (sum < 0) {
                 var timerID = setInterval(function () {
                     i--;
-                    totalGain.text(percentagePrefix + i);
+                    //totalGain.text(percentagePrefix + i);
+                    totalGain.text(i);
                     if (i === sum) clearInterval(timerID);
                 }, intervalTime);
             }
         }
         count(graph, sum);
 
-        percentage.text(percentagePrefix + percentageGain + "%");
+        if(percentageGain == 0) {
+          percentage.hide();
+        } else {
+          percentage.text(percentagePrefix + percentageGain + "%");
+          percentage.show();
+        }
+
+        //percentage.text(percentagePrefix + percentageGain + "%");
         totalGain.text("0%");
         setTimeout(function () {
             percentage.addClass('visible');
