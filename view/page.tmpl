@@ -2,8 +2,8 @@
 <html lang="ru">
 	{% include 'parts/head.tmpl' %}
 	<body>
+			{% include 'parts/navbar.tmpl' %}
 			<div class="uk-container uk-padding">
-				{% include 'parts/navbar.tmpl' %}
 				{% include 'pages/'~page.tag~'.tmpl' %}
 			</div>
 		{% include 'parts/footer.tmpl' %}
