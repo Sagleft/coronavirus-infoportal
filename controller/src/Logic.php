@@ -20,4 +20,11 @@
 		public function getTimeseriesPath() {
 			return __DIR__ . '/../../view/cache/timeseries.json';
 		}
+
+		public function getTimeseriesCyprus() {
+			//TODO: check file exists
+			$json = file_get_contents($this->getTimeseriesPath());
+			//TODO: verify json
+			return json_decode($json, true);
+		}
 	}
