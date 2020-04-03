@@ -1,10 +1,12 @@
-# composer плюшки
+# composer
 /composer.json
 /controller/vendor/**
-# кеш шаблонов
+# cache
 /view/cache/**
-# параметры
+# params
 .env
 .htaccess
-# бекапы
+# backup
 *.bak
+# logs
+/logs
