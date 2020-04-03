@@ -7,7 +7,7 @@
 	<div class="uk-width-expand@m">
 			<div class="charts-container cf">
 				<!-- chart -->
-				<div class="chart uk-box-shadow-medium" id="graph-1-container">
+				<div class="chart uk-box-shadow-medium uk-border-rounded" id="graph-1-container">
 					<h5 class="text-center uk-margin-remove-bottom">Случаев заболевания {#{{ page.info.stats.confirmed_last }}#}</h5>
 					<div class="charts-container">
 						{% set chart = {'id': 'confirmed', 'index': '1'} %}
@@ -15,7 +15,7 @@
 					</div>
 				</div>
 				<!-- chart -->
-				<div class="chart uk-box-shadow-medium" id="graph-2-container">
+				<div class="chart uk-box-shadow-medium uk-border-rounded" id="graph-2-container">
 					<h5 class="text-center uk-margin-remove-bottom">Смертей {#{{ page.info.stats.deaths_last }}#}</h5>
 					<div class="charts-container">
 						{% set chart = {'id': 'death', 'index': '2'} %}
@@ -23,7 +23,7 @@
 					</div>
 				</div>
 				<!-- chart -->
-				<div class="chart uk-box-shadow-medium" id="graph-3-container">
+				<div class="chart uk-box-shadow-medium uk-border-rounded" id="graph-3-container">
 					<h5 class="text-center uk-margin-remove-bottom">Человек выздоровело {#{{ page.info.stats.recovered_last }}#}</h5>
 					<div class="charts-container">
 						{% set chart = {'id': 'recovered', 'index': '3'} %}

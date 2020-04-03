@@ -22,6 +22,11 @@ footer {
 	background: white!important;
 }
 
+.uk-navbar-nav>li>a.uk-active {
+	color: black;
+	border-bottom: 2px solid #8de1f0;
+}
+
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 @font-face {
   font-family: Lato;

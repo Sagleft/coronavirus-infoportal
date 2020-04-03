@@ -2,16 +2,16 @@
 	<div class="uk-navbar-center">
 		<ul class="uk-navbar-nav">
 			<li class="uk-box-shadow-hover-small">
-				<a href="/">Статистика</a>
+				<a href="/"{% if page.tag == 'home' %} class="uk-active"{% endif %}>Статистика</a>
 			</li>
 			<li class="uk-box-shadow-hover-small">
-				<a href="#" class="uk-link-muted">Как передается?</a>
+				<a href="#" {% if page.tag == 'vroutes' %} class="uk-active"{% endif %}>Как передается?</a>
 			</li>
 			<li class="uk-box-shadow-hover-small">
-				<a href="#" class="uk-link-muted">Симптомы</a>
+				<a href="#" {% if page.tag == 'symptoms' %} class="uk-active"{% endif %}>Симптомы</a>
 			</li>
       <li class="uk-box-shadow-hover-small">
-				<a href="#" class="uk-link-muted">Профилактика</a>
+				<a href="#" {% if page.tag == 'prevention' %} class="uk-active"{% endif %}>Профилактика</a>
 			</li>
 		</ul>
 	</div>
