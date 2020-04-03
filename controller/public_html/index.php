@@ -9,6 +9,7 @@
 		'title' => '',
 		'user'  => $handler->user->data,
 		'info'  => [
-			'today' => date('m.d.y')
+			'today' => date('m.d.y'),
+			'stats' => $handler->logic->getTimeseriesCyprus()
 		]
 	]);
