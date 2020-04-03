@@ -7,5 +7,8 @@
 	$handler->render([
 		'tag'   => 'home',
 		'title' => '',
-		'user'  => $handler->user->data
+		'user'  => $handler->user->data,
+		'info'  => [
+			'today' => date('m.d.y')
+		]
 	]);
