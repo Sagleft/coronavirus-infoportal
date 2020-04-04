@@ -1,5 +1,4 @@
 # composer
-/composer.json
 /controller/vendor/**
 # cache
 /view/cache/**
@@ -9,6 +8,5 @@
 # backup
 *.bak
 # logs
-/logs
-
+/logs/**
 *.log
