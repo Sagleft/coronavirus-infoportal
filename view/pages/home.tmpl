@@ -3,6 +3,7 @@
 		<h1>Оперативные данные</h1>
 		<span>По состоянию на {{ page.info.today }}</span><br/>
 		<span>Республика Кипр</span>
+		<div class="uk-box-shadow-small uk-margin-small" style="width: 72px; height: 72px;"></div>
 	</div>
 	<div class="uk-width-expand@m">
 			<div class="charts-container cf">
@@ -16,7 +17,7 @@
 				</div>
 				<!-- chart -->
 				<div class="chart uk-box-shadow-medium uk-border-rounded" id="graph-2-container">
-					<h5 class="text-center uk-margin-remove-bottom">Смертей {#{{ page.info.stats.deaths_last }}#}</h5>
+					<h5 class="text-center uk-margin-remove-bottom">Зафиксировано смертей {#{{ page.info.stats.deaths_last }}#}</h5>
 					<div class="charts-container">
 						{% set chart = {'id': 'death', 'index': '2'} %}
 						{% include 'parts/main/chart.tmpl' %}
@@ -30,6 +31,10 @@
 						{% include 'parts/main/chart.tmpl' %}
 					</div>
 				</div>
+				<!-- chart -->
+				<!--<div class="chart uk-box-shadow-medium uk-border-rounded" id="graph-3-container">
+					//
+				</div>-->
 			</div>
 	<!-- end grid -->
 	</div>
