@@ -1,5 +1,16 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+@font-face {
+  font-family: Lato;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/176026/ProximaNova-Regular.otf);
+  font-weight: 300;
+}
+body, html {
+  font-family: Lato;
+}
+
 body {
 	background: #F9F9F9;
+	min-height: 100vh;
 }
 
 footer {
@@ -27,14 +38,8 @@ footer {
 	border-bottom: 2px solid #8de1f0;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
-@font-face {
-  font-family: Lato;
-  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/176026/ProximaNova-Regular.otf);
-  font-weight: 300;
-}
-body, html {
-  font-family: Lato;
+.uk-padding-micro {
+	padding: 0.5rem;
 }
 
 h1 {
@@ -57,9 +62,7 @@ h1 p {
   transform: translate(1px, 0px);
 }
 
-/* GRAPH - 1 */
-#graph-1 {
-  stroke: url(#gradient-1);
+#graph-confirmed, #graph-death, #graph-recovered {
   stroke-width: 1.5;
   fill: transparent;
   stroke-linecap: round;
@@ -67,6 +70,23 @@ h1 p {
   -moz-animation: lineani 1.3s linear forwards;
   -webkit-animation: lineani 1.3s linear forwards;
   animation: lineani 1.3s linear forwards;
+}
+
+#graph-confirmed {
+	stroke: url(#gradient-1);
+}
+
+#graph-death {
+	stroke: url(#gradient-5);
+}
+
+#graph-recovered {
+	stroke: url(#gradient-6);
+}
+
+/* GRAPH - 1 */
+#graph-1 {
+
 }
 
 #graph-2 {
@@ -146,7 +166,7 @@ h1 p {
 
 .chart {
 	background: white;
-  color: #4a667a;
+  color: #5c5c5c;
   text-align: left;
   position: relative;
   height: auto;
@@ -238,9 +258,10 @@ h1 p {
   -o-transition: ease-in-out 700ms;
   -webkit-transition: ease-in-out 700ms;
   transition: ease-in-out 700ms;
-  color: #48c15e;
+  color: #5a5a5a;
   margin-top: 2px;
   opacity: 0;
+	font-size: 1.4rem;
 }
 .percentage-value.negative {
   color: #ef6670;
