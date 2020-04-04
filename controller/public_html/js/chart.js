@@ -30,6 +30,12 @@ function drawGrid(graph) {
 }
 //drawGrid('#chart-2');
 drawGrid('#chart-1');
+drawGrid('#chart-2');
+drawGrid('#chart-3');
+
+function getMaxOfArray(numArray) {
+  return Math.max.apply(null, numArray);
+}
 
 function drawLineGraph(graph, points, container, id, tag) {
     var graph = Snap(graph);
@@ -40,16 +46,29 @@ function drawLineGraph(graph, points, container, id, tag) {
     var shadowPoints = [];
 
     function parseData(points) {
+        var data_max = getMaxOfArray(points);
         for (i = 0; i < points.length; i++) {
             var p = new point();
-            var pv = points[i] / 100 * 40;
-            p.x = 83.7 / points.length * i + 1;
-            p.y = 40 - pv;
-            if (p.x > 78) {
-                p.x = 78;
+            //var pv = points[i] / 100 * 40;
+            var rect_w = 83.7;
+            var rect_h = 40;
+            var max_x = 78;
+            var y_fix = 1;
+            //x изменяется от 0 до rect_w (или max_x, хрен его знает xD);
+            //y изменяется от rect_h до 0.
+
+            //доля значения в этой точке от максимального значения в выборке
+            var point_hparam = points[i] / data_max;
+            p.y = rect_h - rect_h * point_hparam - y_fix;
+
+            p.x = rect_w / points.length * i + 1;
+            //p.y = wtf_y - pv;
+            if (p.x > max_x) {
+                p.x = max_x;
             }
             myPoints.push(p);
         }
+        //console.log(myPoints);
     }
 
     var segments = [];
@@ -67,7 +86,7 @@ function drawLineGraph(graph, points, container, id, tag) {
     function joinLine(segments_array, id) {
         var line = segments_array.join(" ");
         var line = graph.path(line);
-        line.attr('id', 'graph-' + id);
+        line.attr('id', 'graph-' + tag);
         var lineLength = line.getTotalLength();
 
         line.attr({
@@ -93,14 +112,6 @@ function drawLineGraph(graph, points, container, id, tag) {
         var percentageGain;
         var stepCount = 1300 / sum;
 
-        /*function findPrefix() {
-            if (sum > 0) {
-                prefix = "+";
-            } else {
-                prefix = "-";
-            }
-        }*/
-
         var percentagePrefix = "";
 
         function percentageChange() {
@@ -111,7 +122,6 @@ function drawLineGraph(graph, points, container, id, tag) {
             } else {
               percentagePrefix = '-';
             }
-            //console.log(percentageGain);
         };
         percentageChange();
         //findPrefix();
