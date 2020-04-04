@@ -12,6 +12,13 @@ Web portal. Cyprus Coronavirus Infection Information
 sh install.sh
 ```
 
+затем обновить кеш данных:
+
+```bash
+cd controller/cron
+php updateTimeseries.php
+```
+
 Пример конфигурации виртуального хоста для Apache:
 
 ```
@@ -29,4 +36,10 @@ sh install.sh
   php_admin_value date.timezone 'Asia/Nicosia'
   php_admin_value max_execution_time 60
 </VirtualHost>
+```
+
+в крон добавить выполнение раз в день скрипт:
+
+```
+controller/cron/updateTimeseries.php
 ```
