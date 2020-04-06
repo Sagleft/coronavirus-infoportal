@@ -38,6 +38,13 @@
         //  $num_recovered_last = $cyprus_data[$i]['recovered'];
         //}
         $arr_confirmed[] = $cyprus_data[$i]['confirmed'];
+
+        if(isset($cyprus_data[$i-1])) {
+          if($cyprus_data[$i]['deaths'] < $cyprus_data[$i-1]['deaths']) {
+            $cyprus_data[$i]['deaths'] = $cyprus_data[$i-1]['deaths'];
+          }
+        }
+
         $arr_death[]     = $cyprus_data[$i]['deaths'];
         $arr_recovered[] = $cyprus_data[$i]['recovered'];
         $dates[] = $cyprus_data[$i]['date'];
